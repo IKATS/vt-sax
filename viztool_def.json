@@ -1,0 +1,10 @@
+{
+    "name": "SAX",
+    "types": ["SAX_result"],
+    "classRef": SaxViz,
+    "context": ["inputs"],
+    "keyMap": {
+        "mouse hover": "tooltip the value of a point"
+    },
+    "desc": "Displays a SAX result"
+}
