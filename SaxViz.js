@@ -30,8 +30,12 @@ class SaxViz extends VizTool {
         // Call super-class constructor
         super(container, data, callbacks);
         this.name = "SAX";
+
         // Get ds_name from callbacks
-        this.data.ds_name = callbacks.inputs.ds_name;
+        // Get the input name containing "ds_name"
+        let input_ds_name_key = Object.keys(callbacks.inputs).filter(k => k.indexOf("ds_name") !== -1)[0];
+        //Assign the content to data.ds_name
+        this.data.ds_name = callbacks.inputs[input_ds_name_key];
     }
 
     /**
@@ -42,7 +46,7 @@ class SaxViz extends VizTool {
 
         // Collect data :
         ikats.api.ds.read({
-            "ds_name": this.data.ds_name,
+            "ds_name": self.data.ds_name,
             "async": true,
             "success": function (d) {
                 self.data.ts_list = d.data.ts_list;
